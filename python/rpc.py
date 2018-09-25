@@ -145,6 +145,8 @@ class WinDiscordIpcClient(DiscordIpcClient):
     def _connect(self):
         for i in range(10):
             path = self._pipe_pattern.format(i)
+            if not os.path.exists(path):
+                continue
             try:
                 self._f = open(path, "w+b")
             except OSError as e:

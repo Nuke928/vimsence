@@ -39,10 +39,7 @@ def update_presence():
 
     try:
         rpc_obj.set_activity(activity)
-    except BrokenPipeError as e:
-        # Connection to Discord is lost
-        pass
-    except NameError as e:
+    except Exception as e:
         # Discord is not running
         pass
 
